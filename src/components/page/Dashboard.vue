@@ -1,270 +1,249 @@
 <template>
-    <div>
-        <el-row :gutter="20">
-            <el-col :span="8">
-                <el-card shadow="hover" class="mgb20" style="height:252px;">
-                    <div class="user-info">
-                        <img src="../../assets/img/img.jpg" class="user-avator" alt />
-                        <div class="user-info-cont">
-                            <div class="user-info-name">{{name}}</div>
-                            <div>{{role}}</div>
-                        </div>
-                    </div>
-                    <div class="user-info-list">
-                        上次登录时间：
-                        <span>2019-11-01</span>
-                    </div>
-                    <div class="user-info-list">
-                        上次登录地点：
-                        <span>东莞</span>
-                    </div>
-                </el-card>
-                <el-card shadow="hover" style="height:252px;">
-                    <div slot="header" class="clearfix">
-                        <span>语言详情</span>
-                    </div>Vue
-                    <el-progress :percentage="71.3" color="#42b983"></el-progress>JavaScript
-                    <el-progress :percentage="24.1" color="#f1e05a"></el-progress>CSS
-                    <el-progress :percentage="13.7"></el-progress>HTML
-                    <el-progress :percentage="5.9" color="#f56c6c"></el-progress>
-                </el-card>
-            </el-col>
-            <el-col :span="16">
-                <el-row :gutter="20" class="mgb20">
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{padding: '0px'}">
-                            <div class="grid-content grid-con-1">
-                                <i class="el-icon-lx-people grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">1234</div>
-                                    <div>用户访问量</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{padding: '0px'}">
-                            <div class="grid-content grid-con-2">
-                                <i class="el-icon-lx-notice grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">321</div>
-                                    <div>系统消息</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{padding: '0px'}">
-                            <div class="grid-content grid-con-3">
-                                <i class="el-icon-lx-goods grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">5000</div>
-                                    <div>数量</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
-                </el-row>
-                <el-card shadow="hover" style="height:403px;">
-                    <div slot="header" class="clearfix">
-                        <span>待办事项</span>
-                        <el-button style="float: right; padding: 3px 0" type="text">添加</el-button>
-                    </div>
-                    <el-table :show-header="false" :data="todoList" style="width:100%;">
-                        <el-table-column width="40">
-                            <template slot-scope="scope">
-                                <el-checkbox v-model="scope.row.status"></el-checkbox>
-                            </template>
-                        </el-table-column>
-                        <el-table-column>
-                            <template slot-scope="scope">
-                                <div
-                                    class="todo-item"
-                                    :class="{'todo-item-del': scope.row.status}"
-                                >{{scope.row.title}}</div>
-                            </template>
-                        </el-table-column>
-                        <el-table-column width="60">
-                            <template>
-                                <i class="el-icon-edit"></i>
-                                <i class="el-icon-delete"></i>
-                            </template>
-                        </el-table-column>
-                    </el-table>
-                </el-card>
-            </el-col>
-        </el-row>
-        <el-row :gutter="20">
-            <el-col :span="12">
-                <el-card shadow="hover">
-                    <schart ref="bar" class="schart" canvasId="bar" :options="options"></schart>
-                </el-card>
-            </el-col>
-            <el-col :span="12">
-                <el-card shadow="hover">
-                    <schart ref="line" class="schart" canvasId="line" :options="options2"></schart>
-                </el-card>
-            </el-col>
-        </el-row>
-    </div>
+<a-spin :spinning="loadPage">
+    <a-row :gutter="36" style="height: 30%">
+        <a-col :span="17" :gutter="20">
+            <a-row style="margin-bottom: 10px" :span="12">
+                <DeviceSearch/>
+                <div style="background-color: #ffffff;box-shadow: 3px 3px 3px; padding-bottom: 30px;overflow: scroll" >
+                    <a-row>
+                        <h3></h3>
+                    </a-row>
+                    <a-row :gutter="16" style="height: 450px">
+                        <a-col name = "device-info" style="margin: 30px 50px 30px 50px; " v-for="(val,key) in deviceInfo">
+                            <a-card title="card title"  style="background-color: #e8e6e6">
+                                {{val}}
+                            </a-card>
+                        </a-col>
+                    </a-row>
+
+                </div>
+            </a-row>
+            <a-row style="margin-top: 10px;" :span="12">
+                <div  style="background-color: white;box-shadow: 3px 3px 3px;padding-bottom: 10px" >
+                    <a-divider orientation="left">控制台输出：</a-divider>
+                    <a-list bordered :data-source="outputData" style="margin: 10px 10px 10px 10px; overflow: scroll;height: 200px;padding-bottom: 30px">
+                        <a-list-item slot="renderItem" slot-scope="item, index">
+                            <span style="font-weight: bold">{{ item }}</span>
+                            <span style="float: right">{{index}}</span>
+                        </a-list-item>
+                    </a-list>
+                </div>
+            </a-row>
+
+        </a-col>
+        <a-col :span="6" style="box-shadow: 3px 3px 3px 3px;margin-right: 10px">
+            <a-row style="height: 790px">
+                <a-divider orientation="left" style="color: #4a4af3">串口选择：</a-divider>
+                <a-card    style="background-color: #e8e6e6;padding-bottom: 10px;box-shadow: 3px 3px 3px;">
+                    <a-select v-model="com.selected"  style="float: left;margin-left: 20px  ;width: 150px">
+                        <a-select-option v-for="(val,key,index) in com.groups" :key="index" :value="key">
+                            {{val}}
+                        </a-select-option>
+                    </a-select>
+                    <a-button type="primary" style="float: right" @click="onSelectCom">
+                        确认端口
+                    </a-button>
+                </a-card>
+                <a-divider orientation="left" style="color: #4a4af3">单设备地址查询：</a-divider>
+                <a-card    style="background-color: #e8e6e6;padding-bottom: 10px;box-shadow: 3px 3px 3px;">
+                    <a-select v-model="address.selected"  style="float: left;margin-left: 20px  ;width: 150px">
+                        <a-select-option v-for="(val,key,index) in address.groups" :key="index" :value="key">
+                            {{key}}
+                        </a-select-option>
+                    </a-select>
+                    <a-button type="primary" style="float: right" @click="onSearchAddressSolo">
+                        单地址查询
+                    </a-button>
+                </a-card>
+                <a-divider orientation="left" style="color: #4a4af3">多设备地址查询：</a-divider>
+                <a-card    style="background-color: #e8e6e6;padding-bottom: 10px;box-shadow: 3px 3px 3px;">
+                    <a-select v-model="addressGroup.selected"  style="float: left;margin-left: 20px  ;width: 150px">
+                        <a-select-option v-for="(val,key,index) in addressGroup.groups" :key="index" :value="key">
+                            {{key}}
+                        </a-select-option>
+                    </a-select>
+                    <a-button type="primary" style="float: right" @click="onSearchAddressGroup">
+                        多地址查询
+                    </a-button>
+                </a-card>
+                <a-divider orientation="left" style="color: #4a4af3">命令行输入：</a-divider>
+                <a-card    style="background-color: #e8e6e6;padding-bottom: 10px;box-shadow: 3px 3px 3px;">
+                    <a-textarea
+                        v-model="inputValue"
+                        placeholder="自定义命令内容..."
+                        :auto-size="{ minRows: 3, maxRows: 5 }"
+                    />
+
+                    <a-button type="primary" style="float: right;margin-top: 5px" @click="diyCmdSend">
+                        命令发送
+                    </a-button>
+                </a-card>
+
+            </a-row>
+
+        </a-col>
+
+
+    </a-row>
+
+
+
+
+</a-spin>
 </template>
 
 <script>
-import Schart from 'vue-schart';
-import bus from '../common/bus';
+import DeviceSearch from '@/components/settingBoard/DeviceSearch';
+import axios from 'axios';
 export default {
     name: 'dashboard',
     data() {
         return {
-            name: localStorage.getItem('ms_username'),
-            todoList: [
-                {
-                    title: '今天要修复100个bug',
-                    status: false
-                },
-                {
-                    title: '今天要修复100个bug',
-                    status: false
-                },
-                {
-                    title: '今天要写100行代码加几个bug吧',
-                    status: false
-                },
-                {
-                    title: '今天要修复100个bug',
-                    status: false
-                },
-                {
-                    title: '今天要修复100个bug',
-                    status: true
-                },
-                {
-                    title: '今天要写100行代码加几个bug吧',
-                    status: true
-                }
-            ],
-            data: [
-                {
-                    name: '2018/09/04',
-                    value: 1083
-                },
-                {
-                    name: '2018/09/05',
-                    value: 941
-                },
-                {
-                    name: '2018/09/06',
-                    value: 1139
-                },
-                {
-                    name: '2018/09/07',
-                    value: 816
-                },
-                {
-                    name: '2018/09/08',
-                    value: 327
-                },
-                {
-                    name: '2018/09/09',
-                    value: 228
-                },
-                {
-                    name: '2018/09/10',
-                    value: 1065
-                }
-            ],
-            options: {
-                type: 'bar',
-                title: {
-                    text: '最近一周各品类销售图'
-                },
-                xRorate: 25,
-                labels: ['周一', '周二', '周三', '周四', '周五'],
-                datasets: [
-                    {
-                        label: '家电',
-                        data: [234, 278, 270, 190, 230]
-                    },
-                    {
-                        label: '百货',
-                        data: [164, 178, 190, 135, 160]
-                    },
-                    {
-                        label: '食品',
-                        data: [144, 198, 150, 235, 120]
-                    }
-                ]
+            loadPage: false,
+            deviceInfo : {
+                // '#1': {
+                //     id: '1',
+                //     name: '3151型压力变送器',
+                //     comNum: 'COM1',
+                // },
+                // '#2': {
+                //     id: '2',
+                //     name: '3151型压力变送器',
+                //     comNum: 'COM1',
+                // },
+                // '#3': {
+                //     id: '3',
+                //     name: '3151型压力变送器',
+                //     comNum: 'COM2',
+                // },
+                // '#4': {
+                //     id: '4',
+                //     name: '3150型压力变送器',
+                //     comNum: 'COM3',
+                // },
             },
-            options2: {
-                type: 'line',
-                title: {
-                    text: '最近几个月各品类销售趋势图'
+            outputData: [
+
+            ],
+            com: {
+                selected: '1',
+                groups: {
+                    '1': 'COM1',
+                    '2': 'COM2',
+                    '3': 'COM3'
+                }
+            },
+            address: {
+                selected: '地址0',
+                groups: {
+                    '地址0':'FF FF FF FF 2 0 0 0 2',
+                    '地址1':'FF FF FF FF 2 1 0 0 3',
+                    '地址2':'FF FF FF FF 2 2 0 0 0',
+                    '地址3':'FF FF FF FF 2 3 0 0 1',
+                    '地址4':'FF FF FF FF 2 4 0 0 6',
+                    '地址5':'FF FF FF FF 2 5 0 0 7',
+                    '地址6':'FF FF FF FF 2 6 0 0 4',
+                    '地址7':'FF FF FF FF 2 7 0 0 5',
+                    '地址8':'FF FF FF FF 2 8 0 0 A',
+                    '地址9':'FF FF FF FF 2 9 0 0 B',
+                    '地址10':'FF FF FF FF 2 A 0 0 8',
+                    '地址11':'FF FF FF FF 2 B 0 0 9',
+                    '地址12':'FF FF FF FF 2 C 0 0 E',
+                    '地址13':'FF FF FF FF 2 D 0 0 F',
+                    '地址14':'FF FF FF FF 2 E 0 0 C',
+                    '地址15':'FF FF FF FF 2 F 0 0 D',
                 },
-                labels: ['6月', '7月', '8月', '9月', '10月'],
-                datasets: [
-                    {
-                        label: '家电',
-                        data: [234, 278, 270, 190, 230]
-                    },
-                    {
-                        label: '百货',
-                        data: [164, 178, 150, 135, 160]
-                    },
-                    {
-                        label: '食品',
-                        data: [74, 118, 200, 235, 90]
-                    }
-                ]
+            },
+            inputValue: '',
+            cmdId: 0,
+            addressGroup: {
+                selected: '地址0-15',
+                groups: {
+                    '地址0-15': [
+                        'FF FF FF FF 2 0 0 0 2',
+                        'FF FF FF FF 2 1 0 0 3',
+                        'FF FF FF FF 2 2 0 0 0',
+                        'FF FF FF FF 2 3 0 0 1',
+                        'FF FF FF FF 2 4 0 0 6',
+                        'FF FF FF FF 2 5 0 0 7',
+                        'FF FF FF FF 2 6 0 0 4',
+                        'FF FF FF FF 2 7 0 0 5',
+                        'FF FF FF FF 2 8 0 0 A',
+                        'FF FF FF FF 2 9 0 0 B',
+                        'FF FF FF FF 2 A 0 0 8',
+                        'FF FF FF FF 2 B 0 0 9',
+                        'FF FF FF FF 2 C 0 0 E',
+                        'FF FF FF FF 2 D 0 0 F',
+                        'FF FF FF FF 2 E 0 0 C',
+                        'FF FF FF FF 2 F 0 0 D'],
+                    '地址0-7': [
+                        'FF FF FF FF 2 0 0 0 2',
+                        'FF FF FF FF 2 1 0 0 3',
+                        'FF FF FF FF 2 2 0 0 0',
+                        'FF FF FF FF 2 3 0 0 1',
+                        'FF FF FF FF 2 4 0 0 6',
+                        'FF FF FF FF 2 5 0 0 7',
+                        'FF FF FF FF 2 6 0 0 4',
+                        'FF FF FF FF 2 7 0 0 5',
+                    ],
+                    '地址8-15': [
+                        'FF FF FF FF 2 8 0 0 A',
+                        'FF FF FF FF 2 9 0 0 B',
+                        'FF FF FF FF 2 A 0 0 8',
+                        'FF FF FF FF 2 B 0 0 9',
+                        'FF FF FF FF 2 C 0 0 E',
+                        'FF FF FF FF 2 D 0 0 F',
+                        'FF FF FF FF 2 E 0 0 C',
+                        'FF FF FF FF 2 F 0 0 D'
+                    ]
+                }
             }
-        };
+        }
     },
     components: {
-        Schart
+        DeviceSearch
     },
-    computed: {
-        role() {
-            return this.name === 'admin' ? '超级管理员' : '普通用户';
-        }
-    },
-    // created() {
-    //     this.handleListener();
-    //     this.changeDate();
-    // },
-    // activated() {
-    //     this.handleListener();
-    // },
-    // deactivated() {
-    //     window.removeEventListener('resize', this.renderChart);
-    //     bus.$off('collapse', this.handleBus);
-    // },
+
     methods: {
-        changeDate() {
-            const now = new Date().getTime();
-            this.data.forEach((item, index) => {
-                const date = new Date(now - (6 - index) * 86400000);
-                item.name = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+        onSelectCom() {
+            console.log(this.com.selected)
+            this.$notification.open({
+                message: '配置修改提示：',
+                description:
+                    '通讯串口已修改为：'+this.com.groups[this.com.selected],
+                onClick: () => {
+                    console.log('Notification Clicked!');
+                },
             });
+        },
+        diyCmdSend() {
+            if (this.inputValue != ''){
+                this.outputData.push("发送数据：\xa0\xa0\xa0时间：\xa0"+new Date().toLocaleTimeString()+"-----> \xa0   "+this.inputValue)
+                this.inputValue = ''
+                this.cmdId += 1
+            }
+        },
+        onSearchAddressSolo() {
+
+            if (this.address.selected != '') {
+                this.outputData.push("发送数据：\xa0\xa0\xa0时间：\xa0" + new Date().toLocaleTimeString() + "-----> \xa0   " + this.address.groups[this.address.selected])
+                this.cmdId += 1
+            }
+        },
+        onSearchAddressGroup() {
+            console.log(this.addressGroup.selected)
+            for (let index in this.addressGroup.groups[this.addressGroup.selected]){
+                this.outputData.push("发送数据：\xa0\xa0\xa0时间：\xa0" + new Date().toLocaleTimeString() + "-----> \xa0   " + this.addressGroup.groups[this.addressGroup.selected][index])
+            }
+            this.cmdId += 1
         }
-        // handleListener() {
-        //     bus.$on('collapse', this.handleBus);
-        //     // 调用renderChart方法对图表进行重新渲染
-        //     window.addEventListener('resize', this.renderChart);
-        // },
-        // handleBus(msg) {
-        //     setTimeout(() => {
-        //         this.renderChart();
-        //     }, 200);
-        // },
-        // renderChart() {
-        //     this.$refs.bar.renderChart();
-        //     this.$refs.line.renderChart();
-        // }
     }
 };
 </script>
 
 
 <style scoped>
+
 .el-row {
     margin-bottom: 20px;
 }

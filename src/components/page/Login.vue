@@ -1,7 +1,7 @@
 <template>
     <div class="login-wrap">
         <div class="ms-login">
-            <div class="ms-title">后台管理系统</div>
+            <div class="ms-title">压力变送器性能检测系统</div>
             <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
                 <el-form-item prop="username">
                     <el-input v-model="param.username" placeholder="username">
@@ -66,13 +66,14 @@ export default {
     height: 100%;
     background-image: url(../../assets/img/login-bg.jpg);
     background-size: 100%;
+    background-color: white;
 }
 .ms-title {
     width: 100%;
     line-height: 50px;
     text-align: center;
     font-size: 20px;
-    color: #fff;
+    color: #898585;
     border-bottom: 1px solid #ddd;
 }
 .ms-login {
