@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Dashboard from '@/components/page/Dashboard';
 import Home from '@/components/common/Home';
+import DeviceMonitor from '@/components/page/deviceWatch/DeviceMonitor';
+import DeviceSearch from '@/components/page/settingBoard/DeviceSearch';
 
 Vue.use(Router);
 
@@ -10,16 +11,21 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/dashboard'
+            redirect: '/deviceSearch'
         },
         {
             path: '/',
             component: Home,
             children: [
                 {
-                    path: '/dashboard',
-                    component: Dashboard,
-                    meta: { title: '首页' }
+                    path: '/deviceSearch',
+                    component: DeviceSearch,
+                    meta: { title: '设备寻址' }
+                },
+                {
+                    path: '/deviceMonitor',
+                    component: DeviceMonitor,
+                    meta: { title: '设备监视' }
                 },
                 {
                     path: '/404',

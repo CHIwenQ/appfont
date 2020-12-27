@@ -28,14 +28,14 @@ export default {
             collapse: false,
             items: [
                 {
-                    icon: 'el-icon-lx-home',
-                    index: 'dashboard',
-                    title: '首页'
+                    icon: 'el-icon-lx-search',
+                    index: 'deviceSearch',
+                    title: '设备寻址'
                 },
                 {
-                    icon: 'el-icon-lx-copy',
-                    index: 'tabs',
-                    title: 'tab选项卡'
+                    icon: 'el-icon-view',
+                    index: 'deviceMonitor',
+                    title: '设备监视'
                 },
             ]
         };
