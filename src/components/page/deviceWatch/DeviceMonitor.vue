@@ -1,14 +1,24 @@
 <template>
     <a-spin :spinning="loadPage">
         <a-row style="height: 60%">
-            <div>
-                <div style="dispaly:inline-block;width:300px;height:200px;color:red;">
-                    
-                </div> 
-                <div style="dispaly:inline-block;width:300px">
-                    <a-card    style="background-color: #e8e6e6;padding-bottom: 10px;box-shadow: 3px 3px 3px;">
+            <a-row style="display:flex;margin: 0 auto;">
+                <a-col class="ceil-button">
+                    <a-card  class="card">
+                        <span style="color: #4a4af3;display:block">串口选择：</span>
+                        <a-select v-model="com.selected" class="button-input">
+                            <a-select-option v-for="(val,key,index) in com.groups" :key="index" :value="key">
+                                {{val}}
+                            </a-select-option>
+                        </a-select>
+                        <a-button type="primary" style="float: right" @click="onSelectCom">
+                            确认端口
+                        </a-button>
+                    </a-card>
+                </a-col> 
+                <a-col class="ceil-button">
+                    <a-card class="card">
                         <span style="color: #4a4af3;display:block">单设备地址查询：</span>
-                        <a-select v-model="address.selected"  style="float: left;margin-left: 20px  ;width: 150px">
+                        <a-select v-model="address.selected" class="button-input">
                             <a-select-option v-for="(val,key,index) in address.groups" :key="index" :value="key">
                                 {{key}}
                             </a-select-option>
@@ -17,11 +27,11 @@
                             单地址查询
                         </a-button>
                     </a-card>
-                </div>
-                <div style="dispaly:inline-block;width:300px">
-                    <a-card    style="background-color: #e8e6e6;padding-bottom: 10px;box-shadow: 3px 3px 3px;">
+                </a-col>
+                <a-col class="ceil-button">
+                    <a-card class="card">
                         <span style="color: #4a4af3;display:block">多设备地址查询：</span>
-                        <a-select v-model="addressGroup.selected"  style="float: left;margin-left: 20px  ;width: 150px">
+                        <a-select v-model="addressGroup.selected" class="button-input">
                             <a-select-option v-for="(val,key,index) in addressGroup.groups" :key="index" :value="key">
                                 {{key}}
                             </a-select-option>
@@ -30,22 +40,24 @@
                             多地址查询
                         </a-button>
                     </a-card>
-                </div>
-                <div style="dispaly:inline-block;width:300px">
-                    <a-card    style="background-color: #e8e6e6;padding-bottom: 10px;box-shadow: 3px 3px 3px;">
+                </a-col>
+                <a-col class="ceil-button">
+                    <a-card class="card">
                         <span style="color: #4a4af3;display:block">命令行输入：</span>
                         <a-textarea
+                            style="heig"
+                            class="button-input"
                             v-model="inputValue"
                             placeholder="自定义命令内容..."
-                            :auto-size="{ minRows: 3, maxRows: 5 }"
+                            :auto-size="{ minRows: 1, maxRows: 5 }"
                         />
 
-                        <a-button type="primary" style="float: right;margin-top: 5px" @click="diyCmdSend">
+                        <a-button type="primary" style="float:right" @click="diyCmdSend">
                             命令发送
                         </a-button>
                     </a-card>
-                </div>
-            </div>
+                </a-col>
+            </a-row>
             <a-row style="margin-bottom: 10px" :span="12">
                 <div style="background-color: #ffffff;box-shadow: 3px 3px 3px; padding-bottom: 30px;overflow: scroll" >
                     <a-row>
@@ -233,6 +245,25 @@ export default {
 
 
 <style scoped>
+.ceil-button{
+    margin:auto;
+    width: 200px;
+}
+.card{
+    background-color: #e8e6e6;
+    /* padding-bottom: 10px; */
+    box-shadow: 3px 3px 3px;
+    height: 125px;
+    padding: 5px;
+}
+.card>:first-child{
+    padding: 5px;
+}
+.button-input{
+    float: left;
+    margin:5px 0;
+    width: 150px;
+}
 
 .el-row {
     margin-bottom: 20px;
