@@ -257,7 +257,7 @@ export default {
     padding: 5px;
 }
 .card>:first-child{
-    padding: 5px;
+    padding: 3px;
 }
 .button-input{
     float: left;
@@ -273,8 +273,7 @@ export default {
     display: flex;
     align-items: center;
     height: 100px;
-}
-
+}https://github.com/CHIwenQ/appfont.git
 .grid-cont-right {
     flex: 1;
     text-align: center;
