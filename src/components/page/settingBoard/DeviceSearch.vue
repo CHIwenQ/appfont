@@ -1,6 +1,6 @@
 <template>
     <a-spin :spinning="loadPage">
-        <a-row :gutter="36" style="height: 30%">
+        <a-row :gutter="36" style="height: 60%">
             <a-col :span="17" :gutter="20">
                 <a-row style="margin-bottom: 10px" :span="12">
                     <div style="background-color: #ffffff;box-shadow: 3px 3px 3px; padding-bottom: 30px;overflow: scroll" >
