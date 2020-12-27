@@ -45,7 +45,6 @@
                     <a-card class="card">
                         <span style="color: #4a4af3;display:block">命令行输入：</span>
                         <a-textarea
-                            style="heig"
                             class="button-input"
                             v-model="inputValue"
                             placeholder="自定义命令内容..."
@@ -259,11 +258,7 @@ export default {
 .card>:first-child{
     padding: 3px;
 }
-.button-input{
-    float: left;
-    margin:5px 0;
-    width: 150px;
-}
+
 
 .el-row {
     margin-bottom: 20px;
@@ -273,7 +268,7 @@ export default {
     display: flex;
     align-items: center;
     height: 100px;
-}https://github.com/CHIwenQ/appfont.git
+}
 .grid-cont-right {
     flex: 1;
     text-align: center;
