@@ -2,10 +2,8 @@
     <div class="header">
         <!-- 折叠按钮 -->
         <div class="collapse-btn" @click="collapseChage">
-            <i v-if="!collapse" class="el-icon-s-fold"></i>
-            <i v-else class="el-icon-s-unfold"></i>
         </div>
-        <div class="logo">压力变送器性能检测系统</div>
+        <div class="logo" style="margin-left: 30px">压力变送器性能检测系统</div>
         <div class="header-right">
             <div class="header-user-con">
                 <!-- 全屏显示 -->
