@@ -8,6 +8,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@antv/g2": "^4.1.4",
     "antd": "^4.9.4",
     "axios": "^0.18.1",
     "babel-polyfill": "^6.26.0",

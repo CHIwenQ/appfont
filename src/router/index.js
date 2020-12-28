@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/common/Home';
-import DeviceMonitor from '@/components/page/deviceWatch/DeviceMonitor';
-import DeviceSearch from '@/components/page/settingBoard/DeviceSearch';
 import DeviceConfig from '@/components/page/deviceConfig/DeviceConfig';
 import PressureSet from '@/components/page/pressureSet/PressureSet';
 import TemperCompensation from '@/components/page/temperCompensation/TemperCompensation';
 import PerformancePredict from '@/components/page/performancePrediction/PerformancePredict';
+import DeviceInfo from '@/components/page/deviceInfo/DeviceInfo';
+import Login from '@/components/page/login/Login';
+import Error404 from '@/components/page/common/Error404';
+import Error403 from '@/components/page/common/Error403';
 
 Vue.use(Router);
 
@@ -15,21 +17,16 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/deviceSearch'
+            redirect: '/deviceInfo'
         },
         {
             path: '/',
             component: Home,
             children: [
                 {
-                    path: '/deviceSearch',
-                    component: DeviceSearch,
+                    path: '/deviceInfo',
+                    component: DeviceInfo,
                     meta: { title: '设备信息' }
-                },
-                {
-                    path: '/deviceMonitor',
-                    component: DeviceMonitor,
-                    meta: { title: '设备监视' }
                 },
                 {
                     path: '/deviceConfig',
@@ -55,17 +52,17 @@ export default new Router({
         },
         {
             path: '/404',
-            component: () => import(/* webpackChunkName: "404" */ '../components/page/404.vue'),
+            component: Error404,
             meta: { title: '404' }
         },
         {
             path: '/403',
-            component: () => import(/* webpackChunkName: "403" */ '../components/page/403.vue'),
+            component: Error403,
             meta: { title: '403' }
         },
         {
             path: '/login',
-            component: () => import(/* webpackChunkName: "login" */ '../components/page/Login.vue'),
+            component: Login,
             meta: { title: '登录' }
         },
         {

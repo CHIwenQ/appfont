@@ -1,7 +1,7 @@
 <template>
     <div>
         <a-menu :bind="select" :defaultSelectedKeys="['info']" mode="horizontal" @click="handleClick">
-            <a-menu-item key="/deviceSearch"  >
+            <a-menu-item key="/deviceInfo"  >
                 <a-icon type="mail" />
                 设备信息
             </a-menu-item>

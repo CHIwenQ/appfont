@@ -74,12 +74,6 @@
                             </a-button>
                         </a-card>
                     </a-col>
-<!--                    <a-col class="ceil-button" style="height: 100%">-->
-<!--                        <a-card  class="card">-->
-<!--                            <a-button type="danger">设备复位</a-button>-->
-<!--                        </a-card>-->
-
-<!--                    </a-col>-->
                 </a-row>
                 <transition name="move" mode="out-in">
                     <keep-alive>
@@ -206,8 +200,6 @@ export default {
         bus.$on('collapse-content', msg => {
             this.collapse = msg;
         });
-
-        // 只有在标签页列表里的页面才使用keep-alive，即关闭标签之后就不保存到内存中了。
         bus.$on('tags', msg => {
             let arr = [];
             for (let i = 0, len = msg.length; i < len; i++) {
@@ -336,7 +328,6 @@ export default {
 };
 </script>
 <style>
-
 .ceil-button{
     background-color: #8c939d;
 }
