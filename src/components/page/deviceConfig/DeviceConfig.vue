@@ -1,69 +1,163 @@
 <template>
     <a-card style=";box-shadow: 3px 3px 3px;padding-bottom: 10px">
-        <div class="bigbox">
-            <div class="left">
-                <a-divider orientation="left">传感器调校</a-divider>
-                <div style="margin-bottom:90px">
-                    <a-button size="large" >零点调整</a-button>
+        <a-card style=";box-shadow: 3px 3px 3px;padding-bottom: 10px">
+            <a-divider>综合参数组态：</a-divider>
+            <div style="margin-bottom: 10px;height: 60%">
+                <div  style="width: 30%;display: inline-block;margin-right: 30px;float: left">
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">变送器编号:</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">量程下限：</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">量程上限：</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">量程单位:</p>
+                                  </span>
+                        <a-select  style="float: right;text-align: center" default-value="-量程单位选择-"></a-select>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">低温温度：(℃)</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">高温温度：(℃)</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
                 </div>
-                <div style="margin-bottom:90px">
-                    <a-button size="large" >量程调整</a-button>
+                <div style="width: 30%;display: inline-block;float: left">
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">显示模式:</p>
+                                  </span>
+                        <a-select  style="float: right;text-align: center" default-value="-显示模式选择-"></a-select>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">自稳系数:(%)</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">滤波常数:(uA)</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">阻尼时间：(S)</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">常温温度：(℃)</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">显示精度：</p>
+                                  </span>
+                        <a-select  style="float: right;text-align: center" default-value="-显示精度选择-"></a-select>
+                    </a-row>
                 </div>
-                <div>
-                    <a-button size="large" >主变量调整</a-button>
+                <div style="width: 20%;display: inline-block;float: right">
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">输出特性:</p>
+                                  </span>
+                        <a-select  style="float: right;text-align: center" default-value="-输出特性选择-"></a-select>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">传感器类型：</p>
+                                  </span>
+                        <a-select  style="float: right;text-align: center" default-value="-传感器类型选择-"></a-select>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">传感器供电方式：</p>
+                                  </span>
+                        <a-select  style="float: right;text-align: center" default-value="-供电方式选择-"></a-select>
+                    </a-row>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">传感器最大内阻：</p>
+                                  </span>
+                        <a-select  style="float: right;text-align: center" default-value="-内阻选择-"></a-select>
+                    </a-row>
+                    <a-row style="text-align: center">
+                        <a-button style="text-align: center;margin-top: 30px;" type="primary">参数发送</a-button>
+                    </a-row>
                 </div>
-                
             </div>
-            <div class="center">
-                <a-divider orientation="left">数模调校</a-divider>
-                <div class="step">
-                    <div class="start"><span class="stepcs">步骤一</span></div>
-                    <a-input disabled  class="ctinput" value='输出4mA'></a-input>
+        </a-card>
+        <a-card style=";box-shadow: 3px 3px 3px;padding-bottom: 10px">
+            <a-divider>电流微调：</a-divider>
+            <div style="margin-bottom: 10px;height: 60%">
+                <div  style="width: 30%;display: inline-block;margin-right: 30px;float: left">
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">电流输出模式:</p>
+                                  </span>
+                        <a-select  style="float: right;text-align: center" default-value="-输出模式选择-"></a-select>
+                    </a-row>
+                    <a-row style="text-align: center">
+                        <a-button type="primary" style="margin-top: 30px">检测</a-button>
+                    </a-row>
                 </div>
-                <div class="step">
-                    <div class="start"><span class="stepcs">步骤二</span></div>
-                    <a-input   class="ctinput"></a-input>
-                    <a-input disabled  class="behindinput" value='输入实际读数'></a-input>
-                </div>
-                <div class="step">
-                    <div class="start"><span class="stepcs">步骤三</span></div>
-                    <a-input disabled  class="ctinput" value='输出20mA'></a-input>
-                </div>
-                <div class="step">
-                    <div class="start"><span class="stepcs">步骤四</span></div>
-                    <a-input class="ctinput" ></a-input>
-                    <a-input disabled  class="behindinput" value='输入实际读数'></a-input>
-                </div>
-                <div class="step">
-                    <div class="start"><span class="stepcs">步骤五</span></div>
-                    <a-input disabled  class="ctinput" value=''></a-input>
-                </div>
-            </div>
-            <div class="right">
-                <a-divider orientation="left">回路测试</a-divider>
-                <div class="step">
-                    <span class="stepcs">电流(mA)</span>
-                    <a-input   class="ctinput"></a-input>
-                </div>
-                <a-divider orientation="left">电流控制策略</a-divider>
-                <div class="control">
-                    <div class="start"><span class="stepcs">起点</span></div>
-                    <a-input   class="ctinput"></a-input>
-                </div>
-                <div class="control">
-                    <div class="start"><span class="stepcs">终点</span></div>
-                    <a-input   class="ctinput"></a-input>
-                </div>
-                <div class="control">
-                    <div class="start"><span class="stepcs">步数</span></div>
-                    <a-input   class="ctinput" ></a-input>
-                </div>
-                <div class="control">
-                    <div class="start"><span class="stepcs">单步间隔</span></div>
-                    <a-input   class="ctinput" ></a-input>
+                <div style="width: 30%;display: inline-block;float: left">
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">第一点电流值：</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
+                    <a-row style="text-align: center">
+                        <a-button style="text-align: center" type="primary">确认</a-button>
+                    </a-row>
+                    <a-divider></a-divider>
+                    <a-row>
+                        <span>
+                        <p style="vertical-align:middle;display: inline-block;float: left;margin-right: 20px">第二点电流值：</p>
+                                  </span>
+                        <input style="float: right;text-align: center"></input>
+                    </a-row>
+                    <a-row style="text-align: center">
+                        <a-button style="text-align: center" type="primary">确认</a-button>
+                    </a-row>
                 </div>
             </div>
-        </div>
+        </a-card>
+        <a-row style="margin-top: 10px;" :span="12">
+            <div  style="background-color: white;box-shadow: 3px 3px 3px;padding-bottom: 10px" >
+                <a-divider orientation="left">控制台输出：</a-divider>
+                <a-list bordered :data-source="outputData" style="margin: 10px 10px 10px 10px; overflow: scroll;height: 200px;padding-bottom: 30px">
+                    <a-list-item slot="renderItem" slot-scope="item, index">
+                        <span style="font-weight: bold">{{ item }}</span>
+                        <span style="float: right">{{index}}</span>
+                    </a-list-item>
+                </a-list>
+            </div>
+        </a-row>
     </a-card>
 </template>
 
